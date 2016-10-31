@@ -14,6 +14,15 @@ public enum Currency {
     Currency(int i, String name) {
         this.name = name;
     }
+    public int getCode() {
+        return code;
+        }
+
+    public String getName() {
+        return name;
+        }
+
+
 
 }
 
