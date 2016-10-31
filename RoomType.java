@@ -9,4 +9,7 @@ public enum RoomType {
     RoomType(String translate) {
         this.translate = translate;
     }
+    public String getTranslate() {
+        return translate;
+        }
 }
