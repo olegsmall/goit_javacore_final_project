@@ -7,10 +7,10 @@ public class Room {
     private Currency currency;
     private int persons;
     private RoomType roomType;
-    private String reservedForUser;
+    private User reservedForUser;
 
-    public Room(long id, int number, int price, Currency currency, int persons, RoomType roomType, String reservedForUser) {
-        this.id = id;
+    public Room(int number, int price, Currency currency, int persons, RoomType roomType, User reservedForUser) {
+        
         this.number = number;
         this.price = price;
         this.currency = currency;
@@ -43,7 +43,7 @@ public class Room {
         return roomType;
     }
 
-    public String getReservedForUser() {
+    public User getReservedForUser() {
         return reservedForUser;
     }
 
