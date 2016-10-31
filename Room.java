@@ -9,8 +9,18 @@ public class Room {
     private RoomType roomType;
     private User reservedForUser;
 
+    public int generateID (Room room) {
+        int count = 0;
+        Room room1 = new Room(number, price, currency, persons, roomType, reservedForUser);
+        if (room.equals(room1)){
+            count++;
+        }
+
+        return count;
+    }
+
     public Room(int number, int price, Currency currency, int persons, RoomType roomType, User reservedForUser) {
-        
+
         this.number = number;
         this.price = price;
         this.currency = currency;
