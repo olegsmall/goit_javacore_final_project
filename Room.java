@@ -9,15 +9,15 @@ public class Room {
     private RoomType roomType;
     private User reservedForUser;
 
-    public int generateID (Room room) {
-        int count = 0;
+    public void generateID(Room room) {
+        long count = 0;
         Room room1 = new Room(number, price, currency, persons, roomType, reservedForUser);
-        if (room.equals(room1)){
+        if (room.equals(room1)) {
             count++;
         }
+        setId(count);
+    }   
 
-        return count;
-    }
 
     public Room(int number, int price, Currency currency, int persons, RoomType roomType, User reservedForUser) {
 
@@ -55,6 +55,10 @@ public class Room {
 
     public User getReservedForUser() {
         return reservedForUser;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
