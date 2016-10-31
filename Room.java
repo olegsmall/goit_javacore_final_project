@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Room {
 
@@ -9,18 +10,11 @@ public class Room {
     private RoomType roomType;
     private User reservedForUser;
 
-    public void generateID(Room room) {
-        long count = 0;
-        Room room1 = new Room(number, price, currency, persons, roomType, reservedForUser);
-        if (room.equals(room1)) {
-            count++;
-        }
-        setId(count);
-    }   
 
-
+    
     public Room(int number, int price, Currency currency, int persons, RoomType roomType, User reservedForUser) {
-
+        long l = new Random().nextLong();
+        this.id = l;
         this.number = number;
         this.price = price;
         this.currency = currency;
