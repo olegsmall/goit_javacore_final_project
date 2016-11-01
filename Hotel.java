@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Created by Димон on 31.10.2016.
  */
@@ -8,7 +10,7 @@ public class Hotel {
     private int rooms;
 
     public Hotel(int id, String name, String city, int rooms) {
-        this.id = id;
+        this.id = new Random().nextLong();
         this.name = name;
         this.city = city;
         this.rooms = rooms;

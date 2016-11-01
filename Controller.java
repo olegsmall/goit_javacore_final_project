@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
@@ -11,10 +12,13 @@ public class Controller {
     private DAO<Room> roomDAO;
     private DAO<User> userDAO;
 
-    public Controller() {
+    public Controller(List<Hotel> hotels, List<Room> rooms) {
         hotelDAO = new DAOImpl<>();
         roomDAO = new DAOImpl<>();
         userDAO = new DAOImpl<>();
+
+        hotels.forEach(hotelDAO::saveNew);
+        rooms.forEach(roomDAO::saveNew);
     }
 
     public List<Hotel> findHotelByName(String name) {
