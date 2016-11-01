@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
  */
 public class Controller {
 
-    DAO<Hotel> hotelDAO;
-    DAO<Room> roomDAO;
-    DAO<User> userDAO;
+    private DAO<Hotel> hotelDAO;
+    private DAO<Room> roomDAO;
+    private DAO<User> userDAO;
 
     public Controller() {
         hotelDAO = new DAOImpl<>();
@@ -26,11 +26,11 @@ public class Controller {
         return null;
     }
 
-    void bookRoom(long roomId, long userId, long hotelId) {
+    public void bookRoom(long roomId, long userId, long hotelId) {
 
     }
 
-    void cancelReservation(long roomId, long userId, long hotelId) {
+    public void cancelReservation(long roomId, long userId, long hotelId) {
 
     }
 
