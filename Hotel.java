@@ -2,14 +2,13 @@
  * Created by Димон on 31.10.2016.
  */
 public class Hotel {
-    private long id;
+    private int id = (int)(Math.random()*2147483647+1);
     private String name;
     private String city;
     private int rooms;
 
-    public Hotel(String name, String city, int rooms) {
-        //auto geterator for id
-       // this.id = id;
+    public Hotel(int id, String name, String city, int rooms) {
+        this.id = id;
         this.name = name;
         this.city = city;
         this.rooms = rooms;
