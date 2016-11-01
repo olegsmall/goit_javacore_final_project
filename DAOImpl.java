@@ -13,13 +13,14 @@ public class DAOImpl<T> implements DAO<T> {
     }
 
     @Override
-    public T save(T t) {
+    public T saveNew(T t) {
         db.add(t);
         return t;
     }
 
     @Override
     public boolean delete(T t) {
+        //db.remove(t);
         return false;
     }
 
