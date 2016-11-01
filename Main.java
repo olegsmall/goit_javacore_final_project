@@ -12,12 +12,9 @@ public class Main {
         Controller controller = new Controller();
 
 
-
-
-
     }
 
-    void dataBaseGenerator(Controller controller ) {
+    void dataBaseInitializer(Controller controller ) {
         List<Hotel> hotels = new ArrayList<>();
         hotels.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Киев", 11));
         hotels.add(new Hotel("ОТЕЛЬ ХАЯТТ", "Киев", 19));
@@ -26,6 +23,9 @@ public class Main {
         hotels.add(new Hotel("Гостинный двор", "Kharkiv", 10));
         hotels.add(new Hotel("Astoria", "Lviv", 10));
         hotels.add(new Hotel("Nobilis", "Lviv", 16));
+
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, null));
 
     }
 }
