@@ -10,7 +10,7 @@ public class Hotel {
     private int rooms;
 
     public Hotel(int id, String name, String city, int rooms) {
-        this.id = new Random().nextLong();
+        this.id = id;
         this.name = name;
         this.city = city;
         this.rooms = rooms;
