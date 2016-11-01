@@ -14,6 +14,7 @@ public class DAOImpl<T> implements DAO<T> {
 
     @Override
     public T save(T t) {
+
         return null;
     }
 
@@ -28,12 +29,7 @@ public class DAOImpl<T> implements DAO<T> {
     }
 
     @Override
-    public T findById(long id) {
-        return null;
-    }
-
-    @Override
     public List<T> getAll() {
-        return null;
+        return db;
     }
 }
