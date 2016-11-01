@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by Администратор on 01.11.2016.
@@ -17,9 +18,7 @@ public class Controller {
     }
 
     public List<Hotel> findHotelByName(String name) {
-        //List<Hotel>
-
-        return null;
+        return hotelDAO.getAll().stream().filter((a) -> a.getName().equals(name)).collect(Collectors.toList());
     }
 
     public List<Hotel> findHotelByCity(String city) {
