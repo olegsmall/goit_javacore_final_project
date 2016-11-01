@@ -5,18 +5,13 @@ public class DAOImpl<T> implements DAO<T> {
 
     @Override
     public T save(T t) {
-
-        return null;
+        db.add(t);
+        return t;
     }
 
     @Override
     public boolean delete(T t) {
         return false;
-    }
-
-    @Override
-    public T update(T t) {
-        return null;
     }
 
     @Override

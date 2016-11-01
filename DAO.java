@@ -9,8 +9,6 @@ interface DAO<T> {
 
     boolean delete(T t);
 
-    T update(T t);
-
     List<T> getAll();
 
 }
