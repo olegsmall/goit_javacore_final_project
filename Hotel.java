@@ -2,7 +2,7 @@
  * Created by Димон on 31.10.2016.
  */
 public class Hotel {
-    private int id = (int)(Math.random()*2147483647+1);
+    private long id = (long)(Math.random()*922337203+1);
     private String name;
     private String city;
     private int rooms;
