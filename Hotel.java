@@ -1,19 +1,26 @@
+import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Димон on 31.10.2016.
  */
 public class Hotel {
-    private long id = (long)(Math.random()*922337203+1);
+
+    private long id = ThreadLocalRandom.current().nextLong(100);
     private String name;
     private String city;
-    private int rooms;
+    private List<String> rooms;
+    private int numberOfRooms;
 
-    public Hotel(int id, String name, String city, int rooms) {
-        this.id = id;
+    public Hotel(String name, String city, List<String> rooms, int numberOfRooms) {
         this.name = name;
         this.city = city;
         this.rooms = rooms;
+        this.numberOfRooms = numberOfRooms;
     }
 
     @Override
@@ -33,9 +40,10 @@ public class Hotel {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + rooms;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + city.hashCode();
+        result = 31 * result + rooms.hashCode();
+        result = 31 * result + numberOfRooms;
         return result;
     }
 
@@ -69,11 +77,19 @@ public class Hotel {
         this.city = city;
     }
 
-    public int getRooms() {
+    public List<String> getRooms() {
         return rooms;
     }
 
-    public void setRooms(int rooms) {
+    public void setRooms(List<String> rooms) {
         this.rooms = rooms;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
     }
 }

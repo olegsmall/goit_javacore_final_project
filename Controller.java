@@ -26,8 +26,7 @@ public class Controller {
     }
 
     public List<Hotel> findHotelByCity(String city) {
-
-        return null;
+        return hotelDAO.getAll().stream().filter((a) -> a.getCity().equals(city)).collect(Collectors.toList());
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
