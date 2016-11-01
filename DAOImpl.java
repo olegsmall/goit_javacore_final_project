@@ -22,4 +22,9 @@ public class DAOImpl<T> implements DAO<T> {
     public T findById(long id) {
         return null;
     }
+
+    @Override
+    public List<T> getAll() {
+        return null;
+    }
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Created by Димон on 31.10.2016.
  */
@@ -10,6 +12,8 @@ interface DAO<T> {
     T update(T t);
 
     T findById(long id);
+
+    List<T> getAll();
 
 }
 
