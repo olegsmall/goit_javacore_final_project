@@ -22,6 +22,11 @@ public class DAOImpl<T> implements DAO<T> {
     @Override
     public boolean delete(T t) {
         try {
+            // этот эксепшн никогда не сработает, потому что если объкт не будет найден
+            // вернется фолсе.
+            // тут можно отлавивать помытку удалить объект несовместимого типа.
+//            метод контейнс нам тут не нужен, мы можем сразу юзать ремов
+            
             db.contains(t);
         } catch (NullPointerException ex) {
             System.out.println("Object does not exist in database");
