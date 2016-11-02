@@ -9,10 +9,11 @@ public class Room {
     private int persons;
     private RoomType roomType;
     private User reservedForUser;
+    private Hotel hotel;
 
 
     
-    public Room(int number, int price, Currency currency, int persons, RoomType roomType, User reservedForUser) {
+    public Room(int number, int price, Currency currency, int persons, RoomType roomType, Hotel hotel) {
         long l = new Random().nextLong();
         this.id = l;
         this.number = number;
@@ -20,7 +21,7 @@ public class Room {
         this.currency = currency;
         this.persons = persons;
         this.roomType = roomType;
-        this.reservedForUser = reservedForUser;
+        this.hotel = hotel;
     }
 
     public long getId() {
