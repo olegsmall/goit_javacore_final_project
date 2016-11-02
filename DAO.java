@@ -7,6 +7,7 @@ import java.util.Set;
  * Created by Димон on 31.10.2016.
  */
 abstract class DAO<T> {
+
     private List<T> db;
 
     public DAO() {

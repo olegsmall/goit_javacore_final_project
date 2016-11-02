@@ -1,30 +1,32 @@
 import com.sun.istack.internal.NotNull;
 
+import java.util.Random;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Created by Sergiy on 10/30/16.
  */
 
 public class User {
 
-
-    private long id;
+    private String id = UUID.randomUUID().toString();
     private long phoneNumber;
     private String fullName;
     private String email;
 
 
-    public User(long id, long phoneNumber, String fullName) {
-        this.id = id;
+    public User(long phoneNumber, String fullName, String email) {
         this.phoneNumber = phoneNumber;
         this.fullName = fullName;
+        this.email = email;
     }
 
-    @NotNull
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -62,17 +64,19 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
         if (phoneNumber != user.phoneNumber) return false;
-        return fullName.equals(user.fullName);
+        if (!id.equals(user.id)) return false;
+        if (!fullName.equals(user.fullName)) return false;
+        return email.equals(user.email);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id.hashCode();
         result = 31 * result + (int) (phoneNumber ^ (phoneNumber >>> 32));
         result = 31 * result + fullName.hashCode();
+        result = 31 * result + email.hashCode();
         return result;
     }
 

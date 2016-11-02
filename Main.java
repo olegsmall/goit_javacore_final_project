@@ -20,5 +20,6 @@ public class Main {
 
         controller.registerUser(user2);
 
+
     }
 }
