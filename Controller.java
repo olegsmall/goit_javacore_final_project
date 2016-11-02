@@ -7,25 +7,25 @@ import java.util.stream.Collectors;
  */
 public class Controller {
 
-    private DAO<Hotel> hotelDAO;
-    private DAO<Room> roomDAO;
-    private DAO<User> userDAO;
+    private HotelDAO hotelDAO;
+    private RoomDAO roomDAO;
+    private UserDAO userDAO;
 
     public Controller(List<Hotel> hotels, List<Room> rooms) {
-        hotelDAO = new DAOImpl<>();
-        roomDAO = new DAOImpl<>();
-        userDAO = new DAOImpl<>();
+        hotelDAO = new HotelDAO();
+        roomDAO = new RoomDAO();
+        userDAO = new UserDAO();
 
         hotels.forEach(hotelDAO::add);
         rooms.forEach(roomDAO::add);
     }
 
     public List<Hotel> findHotelByName(String name) {
-        return hotelDAO.getAll().stream().filter((a) -> a.getName().equals(name)).collect(Collectors.toList());
+        return hotelDAO.findByName(name);
     }
 
     public List<Hotel> findHotelByCity(String city) {
-        return hotelDAO.getAll().stream().filter((a) -> a.getCity().equals(city)).collect(Collectors.toList());
+        return hotelDAO.findByCity(city);
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
