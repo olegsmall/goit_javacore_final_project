@@ -30,7 +30,7 @@ public class DAOImpl<T> implements DAO<T> {
     }
 
     @Override
-    public boolean delete(T r) {
+    public boolean delete(T t) {
         try {
        if (t == null){
            throw new NullPointerException();
