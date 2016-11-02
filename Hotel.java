@@ -13,13 +13,12 @@ public class Hotel {
     private long id = ThreadLocalRandom.current().nextLong(100);
     private String name;
     private String city;
-    private List<String> rooms;
+    private List<Room> rooms;
     private int numberOfRooms;
 
-    public Hotel(String name, String city, List<String> rooms, int numberOfRooms) {
+    public Hotel(String name, String city, int numberOfRooms) {
         this.name = name;
         this.city = city;
-        this.rooms = rooms;
         this.numberOfRooms = numberOfRooms;
     }
 
@@ -77,19 +76,19 @@ public class Hotel {
         this.city = city;
     }
 
-    public List<String> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<String> rooms) {
-        this.rooms = rooms;
+    public void addRoom(List<Room> rooms) {
+        rooms.forEach(room -> this.rooms.add(room));
+    }
+
+    public void addRoom(Room room) {
+        this.rooms.add(room);
     }
 
     public int getNumberOfRooms() {
         return numberOfRooms;
-    }
-
-    public void setNumberOfRooms(int numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
     }
 }
