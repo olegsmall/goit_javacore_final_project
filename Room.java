@@ -13,19 +13,16 @@ public class Room {
     private Hotel hotel;
 
 
-    public Room(int number, int price, Currency currency, int persons, RoomType roomType,User reservedForUser ,Hotel hotel) {
+
+    public Room(int number, int price, Currency currency, int persons, RoomType roomType, Hotel hotel) {
         long l = new Random().nextLong();
         this.id = l;
-        new Hotel("", null, 0).
-                addRoom(new Room(
-                        this.number = number,
-                        this.price = price,
-                        this.currency = currency,
-                        this.persons = persons,
-                        this.roomType = roomType,
-                        this.reservedForUser = reservedForUser,
-                        this.hotel = hotel
-                ));
+        this.number = number;
+        this.price = price;
+        this.currency = currency;
+        this.persons = persons;
+        this.roomType = roomType;
+        this.hotel = hotel;
     }
 
     public long getId() {
