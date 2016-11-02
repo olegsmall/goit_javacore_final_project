@@ -10,6 +10,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Controller controller = new Controller();
+        CurrentUser currentUser = new CurrentUser();
+
+        User user = new User();
+        controller.registerUser(user);
 
 
     }
