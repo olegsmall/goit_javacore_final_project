@@ -32,17 +32,17 @@ public class DAOImpl<T> implements DAO<T> {
     @Override
     public boolean delete(T t) {
         try {
-            // этот эксепшн никогда не сработает, потому что если объкт не будет найден
-            // вернется фолсе.
-            // тут можно отлавивать помытку удалить объект несовместимого типа.
-//            метод контейнс нам тут не нужен, мы можем сразу юзать ремов
-
-            db.contains(t);
-        } catch (NullPointerException ex) {
-            System.out.println("Object does not exist in database");
-        }
-
-        db.remove(t);
+       if (t == null){
+           throw new NullPointerException();
+       }
+            this.db.remove(t);
+        } catch (ClassCastException e) {
+        System.out.println("The object can't be deleted because of a type mismatch");
+        return false;
+    }catch (NullPointerException e1){
+        System.out.println("The object can't be deleted because it is null");
+        return false;
+    }
         return true;
     }
 
