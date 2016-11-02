@@ -23,6 +23,7 @@ public class Room {
         this.persons = persons;
         this.roomType = roomType;
         this.hotel = hotel;
+        hotel.addRoom(this);
     }
 
     public long getId() {
