@@ -11,5 +11,14 @@ public class Main {
 
         Controller controller = new Controller();
 
+        User user1 = new User();
+        User user2 = new User();
+        User user3 = new User();
+        controller.addUser(user1);
+        controller.addUser(user2);
+        controller.addUser(user3);
+
+        controller.registerUser(user2);
+
     }
 }

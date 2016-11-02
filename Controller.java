@@ -1,10 +1,6 @@
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-/**
- * Created by Администратор on 01.11.2016.
- */
 public class Controller {
 
     private HotelDAO hotelDAO;
@@ -21,6 +17,14 @@ public class Controller {
 
     public List<Hotel> findHotelByCity(String city) {
         return hotelDAO.findByCity(city);
+    }
+
+    public boolean addUser(User user) {
+        return userDAO.add(user);
+    }
+
+    public void registerUser(User user) {
+
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {

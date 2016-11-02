@@ -7,13 +7,13 @@ import java.util.Set;
  * Created by Димон on 31.10.2016.
  */
 abstract class DAO<T> {
-    protected List<T> db;
+    private List<T> db;
 
     public DAO() {
         this.db = new ArrayList<T>();
     }
 
-    protected T add(T t){
+    protected boolean add(T t){
         try {
             if (t == null) {
                 throw new NullPointerException();
@@ -21,12 +21,12 @@ abstract class DAO<T> {
             this.db.add(t);
         }catch (ClassCastException e) {
             System.out.println("The object is not saved because of a type mismatch");
-            return null;
+            return false;
         }catch (NullPointerException e1){
             System.out.println("The object is not saved because it is null");
-            return null;
+            return false;
         }
-        return t;
+        return true;
         };
 
     protected boolean delete(T t){
