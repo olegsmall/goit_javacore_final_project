@@ -14,8 +14,7 @@ public class Hotel {
     private int numberOfRooms;
 
     public Hotel(String name, String city, int numberOfRooms) {
-        long lId = new Random().nextLong();
-        this.id = lId;
+        this.id = new Random().nextLong();
         this.name = name;
         this.city = city;
         this.rooms = new ArrayList<>();
