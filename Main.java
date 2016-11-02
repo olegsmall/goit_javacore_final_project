@@ -95,6 +95,7 @@ public class Main {
         rooms4.add(new Room(8, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(4)));
         rooms4.add(new Room(9, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(4)));
         rooms4.add(new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(4)));
+        rooms4.add(new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(4)));
         hotels.get(4).addRoom(rooms4);
         allRooms.addAll(rooms4);
 
@@ -110,24 +111,9 @@ public class Main {
         rooms5.add(new Room(9, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(5)));
         rooms5.add(new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(5)));
         rooms5.add(new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(5)));
+        rooms5.add(new Room(12, 2500, Currency.UAH, 2, RoomType.Lux, hotels.get(5)));
         hotels.get(5).addRoom(rooms5);
         allRooms.addAll(rooms5);
-
-        List<Room> rooms6 = new ArrayList<>();
-        rooms6.add(new Room(1, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(2, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(3, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(4, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(5, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(6, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(7, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(8, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(9, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(10, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(11, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        rooms6.add(new Room(12, 2500, Currency.USD, 2, RoomType.Lux, hotels.get(6)));
-        hotels.get(6).addRoom(rooms6);
-        allRooms.addAll(rooms6);
 
         controller = new Controller(hotels, allRooms);
     }

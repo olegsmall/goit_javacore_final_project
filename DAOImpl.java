@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Администратор on 01.11.2016.
@@ -26,6 +27,6 @@ public class DAOImpl<T> implements DAO<T> {
 
     @Override
     public List<T> getAll() {
-        return db;
+        return db.stream().collect(Collectors.toList());
     }
 }
