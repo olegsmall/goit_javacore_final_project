@@ -33,9 +33,10 @@ public class Controller {
 
     }
 
-//    public List<Hotel> cancelReservation(long roomId, long userId, long hotelId) {
-//        //return hotelDAO;
-//    }
+    public void cancelReservation(long roomId, long userId, long hotelId) {
+
+
+    }
 
     public List<Hotel> findRoom(Map<String, String> params) {
 

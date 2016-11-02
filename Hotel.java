@@ -1,8 +1,5 @@
 import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -21,6 +18,7 @@ public class Hotel {
         this.id = lId;
         this.name = name;
         this.city = city;
+        this.rooms = new ArrayList<>();
         this.numberOfRooms = numberOfRooms;
     }
 
