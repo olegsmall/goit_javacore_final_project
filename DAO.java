@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -6,10 +7,10 @@ import java.util.Set;
  * Created by Димон on 31.10.2016.
  */
 abstract class DAO<T> {
-    Set<T> db;
+    protected List<T> db;
 
     public DAO() {
-        this.db = new HashSet<T>();
+        this.db = new ArrayList<T>();
     }
 
     protected T add(T t){

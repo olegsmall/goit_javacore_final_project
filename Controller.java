@@ -11,13 +11,10 @@ public class Controller {
     private RoomDAO roomDAO;
     private UserDAO userDAO;
 
-    public Controller(List<Hotel> hotels, List<Room> rooms) {
+    public Controller() {
         hotelDAO = new HotelDAO();
         roomDAO = new RoomDAO();
         userDAO = new UserDAO();
-
-        hotels.forEach(hotelDAO::add);
-        rooms.forEach(roomDAO::add);
     }
 
     public List<Hotel> findHotelByName(String name) {
