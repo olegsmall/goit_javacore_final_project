@@ -21,8 +21,14 @@ public class DAOImpl<T> implements DAO<T> {
 
     @Override
     public boolean delete(T t) {
-        //db.remove(t);
-        return false;
+        try {
+            db.contains(t);
+        } catch (NullPointerException ex) {
+            System.out.println("Object does not exist in database");
+        }
+
+        db.remove(t);
+        return true;
     }
 
     @Override
