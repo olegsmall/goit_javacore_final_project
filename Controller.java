@@ -8,12 +8,10 @@ import java.util.stream.Collectors;
 public class Controller {
 
     private HotelDAO hotelDAO;
-    private RoomDAO roomDAO;
     private UserDAO userDAO;
 
     public Controller() {
         hotelDAO = new HotelDAO();
-        roomDAO = new RoomDAO();
         userDAO = new UserDAO();
     }
 
