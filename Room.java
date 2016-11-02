@@ -75,8 +75,9 @@ public class Room {
         if (persons != room.persons) return false;
         if (currency != room.currency) return false;
         if (roomType != room.roomType) return false;
-        if (!reservedForUser.equals(room.reservedForUser)) return false;
-        return hotel.equals(room.hotel);
+        if (reservedForUser != null ? !reservedForUser.equals(room.reservedForUser) : room.reservedForUser != null)
+            return false;
+        return hotel != null ? hotel.equals(room.hotel) : room.hotel == null;
 
     }
 
@@ -85,11 +86,11 @@ public class Room {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + number;
         result = 31 * result + price;
-        result = 31 * result + currency.hashCode();
+        result = 31 * result + (currency != null ? currency.hashCode() : 0);
         result = 31 * result + persons;
-        result = 31 * result + roomType.hashCode();
-        result = 31 * result + reservedForUser.hashCode();
-        result = 31 * result + hotel.hashCode();
+        result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
+        //result = 31 * result + (reservedForUser != null ? reservedForUser.hashCode() : 0);
+        result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
         return result;
     }
 

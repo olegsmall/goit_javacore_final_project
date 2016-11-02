@@ -29,18 +29,19 @@ public class Hotel {
         Hotel hotel = (Hotel) o;
 
         if (id != hotel.id) return false;
-        if (rooms != hotel.rooms) return false;
+        if (numberOfRooms != hotel.numberOfRooms) return false;
         if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        return city != null ? city.equals(hotel.city) : hotel.city == null;
+        if (city != null ? !city.equals(hotel.city) : hotel.city != null) return false;
+        return rooms != null ? rooms.equals(hotel.rooms) : hotel.rooms == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
-        result = 31 * result + city.hashCode();
-        result = 31 * result + rooms.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+ //       result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
         result = 31 * result + numberOfRooms;
         return result;
     }
@@ -50,8 +51,9 @@ public class Hotel {
         return "Hotel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", cyti='" + city + '\'' +
+                ", city='" + city + '\'' +
                 ", rooms=" + rooms +
+                ", numberOfRooms=" + numberOfRooms +
                 '}';
     }
 

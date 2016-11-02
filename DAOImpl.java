@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -7,15 +6,26 @@ import java.util.stream.Collectors;
  */
 public class DAOImpl<T> implements DAO<T> {
 
-    List<T> db;
+    Set<T> db;
 
     public DAOImpl() {
-        this.db = new ArrayList<T>();
+        this.db = new HashSet<T>();
     }
 
     @Override
-    public T saveNew(T t) {
-        db.add(t);
+    public T add(T t) {
+        try {
+            if (t == null) {
+                throw new NullPointerException();
+            }
+            this.db.add(t);
+        }catch (ClassCastException e) {
+            System.out.println("The object is not saved because of a type mismatch");
+            return null;
+        }catch (NullPointerException e1){
+            System.out.println("The object is not saved because it is null");
+            return null;
+        }
         return t;
     }
 
@@ -26,7 +36,7 @@ public class DAOImpl<T> implements DAO<T> {
             // вернется фолсе.
             // тут можно отлавивать помытку удалить объект несовместимого типа.
 //            метод контейнс нам тут не нужен, мы можем сразу юзать ремов
-            
+
             db.contains(t);
         } catch (NullPointerException ex) {
             System.out.println("Object does not exist in database");

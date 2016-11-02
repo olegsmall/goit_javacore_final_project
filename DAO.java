@@ -5,7 +5,7 @@ import java.util.List;
  */
 interface DAO<T> {
 
-    T saveNew(T t);
+    T add(T t);
 
     boolean delete(T t);
 
