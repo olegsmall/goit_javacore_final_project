@@ -1,8 +1,5 @@
 import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -10,16 +7,17 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Hotel {
 
-    private long id = ThreadLocalRandom.current().nextLong(100);
+    private long id;
     private String name;
     private String city;
-    private List<String> rooms;
+    private List<Room> rooms;
     private int numberOfRooms;
 
-    public Hotel(String name, String city, List<String> rooms, int numberOfRooms) {
+    public Hotel(String name, String city, int numberOfRooms) {
+        this.id = new Random().nextLong();
         this.name = name;
         this.city = city;
-        this.rooms = rooms;
+        this.rooms = new ArrayList<>();
         this.numberOfRooms = numberOfRooms;
     }
 
@@ -31,18 +29,19 @@ public class Hotel {
         Hotel hotel = (Hotel) o;
 
         if (id != hotel.id) return false;
-        if (rooms != hotel.rooms) return false;
+        if (numberOfRooms != hotel.numberOfRooms) return false;
         if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        return city != null ? city.equals(hotel.city) : hotel.city == null;
+        if (city != null ? !city.equals(hotel.city) : hotel.city != null) return false;
+        return rooms != null ? rooms.equals(hotel.rooms) : hotel.rooms == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
-        result = 31 * result + city.hashCode();
-        result = 31 * result + rooms.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+ //       result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
         result = 31 * result + numberOfRooms;
         return result;
     }
@@ -52,8 +51,9 @@ public class Hotel {
         return "Hotel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", cyti='" + city + '\'' +
+                ", city='" + city + '\'' +
                 ", rooms=" + rooms +
+                ", numberOfRooms=" + numberOfRooms +
                 '}';
     }
 
@@ -77,19 +77,19 @@ public class Hotel {
         this.city = city;
     }
 
-    public List<String> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<String> rooms) {
-        this.rooms = rooms;
+    public void addRoom(List<Room> rooms) {
+        rooms.forEach(room -> this.rooms.add(room));
+    }
+
+    public void addRoom(Room room) {
+        this.rooms.add(room);
     }
 
     public int getNumberOfRooms() {
         return numberOfRooms;
-    }
-
-    public void setNumberOfRooms(int numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
     }
 }

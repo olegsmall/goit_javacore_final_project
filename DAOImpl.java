@@ -1,31 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Администратор on 01.11.2016.
  */
 public class DAOImpl<T> implements DAO<T> {
 
-    List<T> db;
+    Set<T> db;
 
     public DAOImpl() {
-        this.db = new ArrayList<T>();
+        this.db = new HashSet<T>();
     }
 
     @Override
-    public T saveNew(T t) {
-        db.add(t);
+    public T add(T t) {
+        try {
+            if (t == null) {
+                throw new NullPointerException();
+            }
+            this.db.add(t);
+        }catch (ClassCastException e) {
+            System.out.println("The object is not saved because of a type mismatch");
+            return null;
+        }catch (NullPointerException e1){
+            System.out.println("The object is not saved because it is null");
+            return null;
+        }
         return t;
     }
 
     @Override
     public boolean delete(T t) {
-        //db.remove(t);
+        try {
+       if (t == null){
+           throw new NullPointerException();
+       }
+            this.db.remove(t);
+        } catch (ClassCastException e) {
+        System.out.println("The object can't be deleted because of a type mismatch");
         return false;
+    }catch (NullPointerException e1){
+        System.out.println("The object can't be deleted because it is null");
+        return false;
+    }
+        return true;
     }
 
     @Override
     public List<T> getAll() {
-        return db;
+        return db.stream().collect(Collectors.toList());
     }
 }
