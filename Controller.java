@@ -35,7 +35,6 @@ public class Controller {
 
     public void cancelReservation(long roomId, long userId, long hotelId) {
 
-
     }
 
     public List<Hotel> findRoom(Map<String, String> params) {
