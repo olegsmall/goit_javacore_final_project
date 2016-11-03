@@ -30,7 +30,6 @@ public class Main {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
 
-
         System.out.println("Свободные комнаты отеля ПРЕМЬЕР ПАЛАС:");
         hotels = controller.findHotelByName("ПРЕМЬЕР ПАЛАС");
         for (Hotel hotel : hotels) {

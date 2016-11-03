@@ -13,12 +13,12 @@ public class Hotel {
     private List<Room> rooms;
     private int numberOfRooms;
 
-    public Hotel(String name, String city, int numberOfRooms) {
+    public Hotel(String name, String city) {
         this.id = new Random().nextLong();
         this.name = name;
         this.city = city;
         this.rooms = new ArrayList<>();
-        this.numberOfRooms = numberOfRooms;
+        this.numberOfRooms = 0;
     }
 
     @Override
@@ -86,6 +86,7 @@ public class Hotel {
 
     public void addRoom(Room room) {
         this.rooms.add(room);
+        this.numberOfRooms += 1;
     }
 
     public int getNumberOfRooms() {

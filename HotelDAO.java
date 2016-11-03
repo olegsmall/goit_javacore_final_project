@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
 public class HotelDAO extends DAO<Hotel>{
 
     {
-        db.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Kiev", 10));
-        db.add(new Hotel("ОТЕЛЬ ХАЯТТ", "Kiev", 11));
-        db.add(new Hotel("Космополит", "Kharkiv", 12));
-        db.add(new Hotel("Гостинный двор", "Kharkiv", 10));
-        db.add(new Hotel("Astoria", "Lviv", 11));
-        db.add(new Hotel("Nobilis", "Lviv", 12));
+        db.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Kiev"));
+        db.add(new Hotel("ОТЕЛЬ ХАЯТТ", "Kiev"));
+        db.add(new Hotel("Космополит", "Kharkiv"));
+        db.add(new Hotel("Гостинный двор", "Kharkiv"));
+        db.add(new Hotel("Astoria", "Lviv"));
+        db.add(new Hotel("Nobilis", "Lviv"));
 
         List<Room> rooms0 = new ArrayList<>();
         rooms0.add(new Room(1, 2500, Currency.UAH, 1, RoomType.Lux, db.get(0)));
