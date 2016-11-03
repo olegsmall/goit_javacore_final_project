@@ -83,10 +83,10 @@ public class User {
     public String getEmailWithName() {
         return fullName + " <" + email + ">";
     }
+    
 
     @Override
     public String toString() {
-        return "User(" + fullName + ")";
+        return "User(" + "id='" + id + '\'' + fullName + ')';
     }
-
 }
