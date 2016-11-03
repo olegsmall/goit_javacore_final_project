@@ -19,11 +19,8 @@ public class Main {
         controller.addUser(user2);
         controller.addUser(user3);
 
-        try {
-            controller.findHotelByCity("Kiev").forEach(System.out::println);
-        } catch (NullPointerException e) {
 
-        }
+        hotels =  controller.findHotelByCity("Kiev");
 
         controller.registerUser(user2);
 
@@ -39,8 +36,5 @@ public class Main {
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
-
-
-
     }
 }
