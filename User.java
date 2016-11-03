@@ -10,23 +10,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
 
-    private String id = UUID.randomUUID().toString();
-    private long phoneNumber;
+    private long id;
+    private String phoneNumber;
     private String fullName;
     private String email;
 
 
-    public User(long phoneNumber, String fullName, String email) {
+    public User(String fullName, String phoneNumber, String email) {
+        this.id = new Random().nextLong();
         this.phoneNumber = phoneNumber;
         this.fullName = fullName;
         this.email = email;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -40,11 +41,11 @@ public class User {
     }
 
     @NotNull
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -64,19 +65,19 @@ public class User {
 
         User user = (User) o;
 
-        if (phoneNumber != user.phoneNumber) return false;
-        if (!id.equals(user.id)) return false;
-        if (!fullName.equals(user.fullName)) return false;
-        return email.equals(user.email);
+        if (id != user.id) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        if (fullName != null ? !fullName.equals(user.fullName) : user.fullName != null) return false;
+        return email != null ? email.equals(user.email) : user.email == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + (int) (phoneNumber ^ (phoneNumber >>> 32));
-        result = 31 * result + fullName.hashCode();
-        result = 31 * result + email.hashCode();
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 

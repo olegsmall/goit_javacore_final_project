@@ -8,7 +8,7 @@ import java.util.Set;
  */
 abstract class DAO<T> {
 
-    private List<T> db;
+    protected List<T> db;
 
     public DAO() {
         this.db = new ArrayList<T>();

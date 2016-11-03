@@ -12,11 +12,27 @@ public class Controller {
     }
 
     public List<Hotel> findHotelByName(String name) {
-        return hotelDAO.findByName(name);
+        List<Hotel> hotels;
+        if (!isUserRegistered()){
+            return null;
+        }
+        hotels = hotelDAO.findByName(name);
+        if (hotels.isEmpty()) {
+            System.out.println("By your request nothing has been found");
+        }
+        return hotels;
     }
 
     public List<Hotel> findHotelByCity(String city) {
-        return hotelDAO.findByCity(city);
+        List<Hotel> hotels;
+        if (!isUserRegistered()){
+            return null;
+        }
+        hotels = hotelDAO.findByCity(city);
+        if (hotels.isEmpty()) {
+            System.out.println("By your request nothing has been found");
+        }
+        return hotels;
     }
 
     public boolean addUser(User user) {
@@ -24,7 +40,7 @@ public class Controller {
     }
 
     public void registerUser(User user) {
-
+        CurrentUser.setCurrentUser(user);
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
@@ -41,5 +57,16 @@ public class Controller {
         return null;
     }
 
+    private boolean isUserRegistered() {
+        try {
+            if (CurrentUser.getCurrentUser() == null) {
+                throw new NullPointerException();
+            }
+        } catch (NullPointerException e) {
+            System.out.println("User not registered");
+            return false;
+        }
+        return true;
+    }
 
 }

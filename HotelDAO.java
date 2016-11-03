@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class HotelDAO extends DAO<Hotel>{
 
     {
-        db.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Киев", 10));
-        db.add(new Hotel("ОТЕЛЬ ХАЯТТ", "Киев", 11));
+        db.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Kiev", 10));
+        db.add(new Hotel("ОТЕЛЬ ХАЯТТ", "Kiev", 11));
         db.add(new Hotel("Космополит", "Kharkiv", 12));
         db.add(new Hotel("Гостинный двор", "Kharkiv", 10));
         db.add(new Hotel("Astoria", "Lviv", 11));

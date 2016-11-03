@@ -10,15 +10,36 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Controller controller = new Controller();
+        List<Hotel> hotels;
 
-        User user1 = new User();
-        User user2 = new User();
-        User user3 = new User();
+        User user1 = new User("Mark", "555-55-55", "mark@mail.com");
+        User user2 = new User("Stiv", "222-22-22", "stiv@mail.com");
+        User user3 = new User("Bill", "333-33-33", "bill@mail.com");
         controller.addUser(user1);
         controller.addUser(user2);
         controller.addUser(user3);
 
+        try {
+            controller.findHotelByCity("Kiev").forEach(System.out::println);
+        } catch (NullPointerException e) {
+
+        }
+
         controller.registerUser(user2);
+
+        System.out.println("Свободные комнаты в отелях города Киева:");
+        hotels = controller.findHotelByCity("Kiev");
+        for (Hotel hotel : hotels) {
+            hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
+        }
+
+
+        System.out.println("Свободные комнаты отеля ПРЕМЬЕР ПАЛАС:");
+        hotels = controller.findHotelByName("ПРЕМЬЕР ПАЛАС");
+        for (Hotel hotel : hotels) {
+            hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
+        }
+
 
 
     }
