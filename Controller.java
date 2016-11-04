@@ -67,6 +67,8 @@ public class Controller {
         } catch (NullPointerException e
                 ) {
             System.out.println("Yours id's aren't correct");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("There is IndexOfBoundException");
         }
 
     }
