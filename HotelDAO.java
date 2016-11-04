@@ -109,4 +109,8 @@ public class HotelDAO extends DAO<Hotel>{
     public List<Hotel> findByCity(String city) {
         return db.stream().filter((a) -> a.getCity().equals(city)).collect(Collectors.toList());
     }
+
+    public Hotel findHotelById(long id) {
+        return db.stream().filter(hotel -> hotel.getId() == id).findFirst().orElse(null);
+    }
 }
