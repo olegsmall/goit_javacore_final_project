@@ -36,6 +36,10 @@ public class Main {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
 
+        System.out.println("Booked rooms are such elements:");
         controller.bookRoom(user2.getId(),hotels.get(0).getRooms().get(1).getId(),hotels.get(0).getId());
+        for (Hotel hotel : hotels) {
+            hotel.getRooms().stream().filter((room -> room.getReservedForUser() != null)).forEach(System.out::println);
+        }
     }
 }
