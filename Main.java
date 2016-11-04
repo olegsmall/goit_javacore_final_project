@@ -35,5 +35,7 @@ public class Main {
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
+
+        controller.bookRoom(user2.getId(),hotels.get(0).getRooms().get(1).getId(),hotels.get(0).getId());
     }
 }

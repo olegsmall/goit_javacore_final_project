@@ -54,6 +54,10 @@ public class Room {
         return reservedForUser;
     }
 
+    public void setReservedForUser(User reservedForUser) {
+        this.reservedForUser = reservedForUser;
+    }
+
     public void setId(long id) {
         this.id = id;
     }

@@ -44,6 +44,30 @@ public class Controller {
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
+        try {
+            if (roomId == 0 || userId == 0 || hotelId == 0) {
+                throw new NullPointerException();
+            }
+
+            for (int i = 0; i < hotelDAO.db.size(); i++) {
+                for (int j = 0; j < hotelDAO.db.get(i).getRooms().size(); j++) {
+                    if (hotelDAO.db.get(i).getRooms().get(j).getId() == roomId
+                            || CurrentUser.getCurrentUser().getId() == userId
+                            || hotelDAO.db.get(i).getId() == hotelId) {
+                        hotelDAO.db.get(i).getRooms().get(j).setReservedForUser(CurrentUser.getCurrentUser());
+                    }
+
+
+                }
+
+
+            }
+
+
+        } catch (NullPointerException e
+                ) {
+            System.out.println("Yours id's aren't correct");
+        }
 
     }
 
