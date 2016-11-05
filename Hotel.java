@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 /**
  * Created by Димон on 31.10.2016.
@@ -10,7 +11,7 @@ public class Hotel {
     private long id;
     private String name;
     private String city;
-    private List<Room> rooms;
+    private static List<Room> rooms;
     private int numberOfRooms;
 
     public Hotel(String name, String city) {
@@ -41,7 +42,7 @@ public class Hotel {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (city != null ? city.hashCode() : 0);
- //       result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
+        //       result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
         result = 31 * result + numberOfRooms;
         return result;
     }
@@ -91,5 +92,18 @@ public class Hotel {
 
     public int getNumberOfRooms() {
         return numberOfRooms;
+    }
+
+    public static Room findRoomById(long id) {
+        Room roomIsfound = null;
+        try {
+
+            roomIsfound = rooms.stream().filter(room -> room.getId() == id).findAny().orElse(null);
+        } catch (NullPointerException e) {
+            System.out.println("This room doesn't exist in the list of hotel rooms");
+        }
+
+        return roomIsfound;
+
     }
 }

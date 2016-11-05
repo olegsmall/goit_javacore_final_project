@@ -41,5 +41,10 @@ public class Main {
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() != null)).forEach(System.out::println);
         }
+
+        // check method perfomance.......
+        System.out.println("\n" + "Founded room is :" + Hotel.findRoomById(hotels.get(0).getRooms().get(1).getId()));
+
     }
+
 }
