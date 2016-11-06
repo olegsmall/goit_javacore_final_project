@@ -76,7 +76,10 @@ public class Controller {
     }
 
     public void cancelReservation(long roomId, long userId, long hotelId) {
-    Hotel hotel = hotelDAO.findHotelById(hotelId);
+        if (!isUserRegistered()) {
+            return;
+        }
+        Hotel hotel = hotelDAO.findHotelById(hotelId);
         if (hotel == null){
             System.out.println("Hotel with Id " + hotelId + " not found.");
             return ;
