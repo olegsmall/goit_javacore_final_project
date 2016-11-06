@@ -52,19 +52,22 @@ public class Controller {
         if (!isUserRegistered()) {
             return;
         }
-
-        try {
-            for (int i = 0; i < hotelDAO.db.size(); i++) {
-                if (hotelDAO.db.get(i).findRoomById(roomId).getId() == roomId
-                        && userDAO.findUserById(userId).getId() == userId
-                        && hotelDAO.db.get(i).getId() == hotelId) {
-                    hotelDAO.db.get(i).findRoomById(roomId).setReservedForUser(CurrentUser.getCurrentUser());
-                }
-            }
-
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("There is IndexOfBoundException");
+        Hotel hotel = hotelDAO.findHotelById(hotelId);
+        if (hotel == null) {
+            System.out.println("Hotel with Id " + hotelId + " not found.");
+            return;
         }
+        Room room = hotel.findRoomById(roomId);
+        if (room == null) {
+            System.out.println("Room with Id " + roomId + " not found.");
+            return;
+        }
+        User user = userDAO.findUserById(userId);
+        if (user == null) {
+            System.out.println("User with Id " + userId + " not found.");
+            return;
+        }
+        room.setReservedForUser(user);
     }
 
     public void cancelReservation(long roomId, long userId, long hotelId) {
@@ -72,17 +75,21 @@ public class Controller {
             return;
         }
         Hotel hotel = hotelDAO.findHotelById(hotelId);
-        if (hotel == null){
+        if (hotel == null) {
             System.out.println("Hotel with Id " + hotelId + " not found.");
-            return ;
+            return;
         }
         Room room = hotel.findRoomById(roomId);
-        if(room == null){
+        if (room == null) {
             System.out.println("Room with Id " + roomId + " not found.");
             return;
         }
         User user = userDAO.findUserById(userId);
-        if(user.equals(room.getReservedForUser())){
+        if (user == null) {
+            System.out.println("User with Id " + userId + " not found.");
+            return;
+        }
+        if (user.equals(room.getReservedForUser())) {
             room.setReservedForUser(null);
         }
     }
