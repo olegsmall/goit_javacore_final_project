@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Set;
 
 public class Controller {
 
@@ -53,20 +54,20 @@ public class Controller {
         }
 
         try {
-            // Изменил условие на ИЛИ, было И, получалось что исключение кидалось только если все поля были нулевыми
-            if (roomId == 0 || userId == 0 || hotelId == 0) {
-                throw new NullPointerException();
-            }
-            //это нужно заменить на getById для соответствующих классов
-            for (int i = 0; i < hotelDAO.db.size(); i++) {
-                for (int j = 0; j < hotelDAO.db.get(i).getRooms().size(); j++) {
-                    if (hotelDAO.db.get(i).getRooms().get(j).getId() == roomId
-                            && CurrentUser.getCurrentUser().getId() == userId
-                            && hotelDAO.db.get(i).getId() == hotelId) {
-                        hotelDAO.db.get(i).getRooms().get(j).setReservedForUser(CurrentUser.getCurrentUser());
+                // Изменил условие на ИЛИ, было И, получалось что исключение кидалось только если все поля были нулевыми
+                if (roomId == 0 || userId == 0 || hotelId == 0) {
+                    throw new NullPointerException();
+                }
+                //это нужно заменить на getById для соответствующих классов
+                for (int i = 0; i < hotelDAO.db.size(); i++) {
+                    for (int j = 0; j < hotelDAO.db.get(i).getRooms().size(); j++) {
+                        if (hotelDAO.db.get(i).getRooms().get(j).getId() == roomId
+                                && CurrentUser.getCurrentUser().getId() == userId
+                                && hotelDAO.db.get(i).getId() == hotelId) {
+                            hotelDAO.db.get(i).getRooms().get(j).setReservedForUser(CurrentUser.getCurrentUser());
+                        }
                     }
                 }
-            }
         } catch (NullPointerException e) {
             System.out.println("Yours id's aren't correct");
         } catch (IndexOutOfBoundsException e) {
@@ -75,8 +76,20 @@ public class Controller {
     }
 
     public void cancelReservation(long roomId, long userId, long hotelId) {
-
-
+    Hotel hotel = hotelDAO.findHotelById(hotelId);
+        if (hotel == null){
+            System.out.println("Hotel with Id " + hotelId + " not found.");
+            return ;
+        }
+        Room room = hotel.findRoomById(roomId);
+        if(room == null){
+            System.out.println("Room with Id " + roomId + " not found.");
+            return;
+        }
+//        User user = userDAO.getUserById(userId);
+//        if(user.equals(room.getReservedForUser())){
+//            room.setReservedForUser(null);
+//        }
     }
 
     public List<Hotel> findRoom(Map<String, String> params) {
@@ -96,7 +109,6 @@ public class Controller {
         }
         return null;
     }
-
 
     private boolean isUserRegistered() {
         try {

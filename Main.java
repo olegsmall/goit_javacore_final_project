@@ -46,5 +46,4 @@ public class Main {
        // System.out.println("\n" + "Founded room is :" + Hotel.findRoomById(hotels.get(0).getRooms().get(1).getId()));
 
     }
-
 }
