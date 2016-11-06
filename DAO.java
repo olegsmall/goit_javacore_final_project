@@ -16,35 +16,31 @@ abstract class DAO<T> {
 
     protected boolean add(T t){
         try {
-            if (t == null) {
-                throw new NullPointerException();
+            if (t != null) {
+                this.db.add(t);
+            }else {
+                System.out.println("The object is not saved because it is null");
             }
-            this.db.add(t);
         }catch (ClassCastException e) {
             System.out.println("The object is not saved because of a type mismatch");
             return false;
-        }catch (NullPointerException e1){
-            System.out.println("The object is not saved because it is null");
-            return false;
         }
         return true;
-        };
+        }
 
     protected boolean delete(T t){
         try {
-                if (t == null){
-                    throw new NullPointerException();
+                if (t != null) {
+                    this.db.remove(t);
+                }else {
+                    System.out.println("The object can't be deleted because it is null");
                 }
-                this.db.remove(t);
             } catch (ClassCastException e) {
                 System.out.println("The object can't be deleted because of a type mismatch");
                 return false;
-            }catch (NullPointerException e1){
-                System.out.println("The object can't be deleted because it is null");
-                return false;
             }
         return true;
-    };
+    }
 }
 
 

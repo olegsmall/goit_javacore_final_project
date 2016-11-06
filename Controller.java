@@ -95,6 +95,7 @@ public class Controller {
     public List<Hotel> findRoom(Map<String, String> params) {
         List<Room> foundRooms = new ArrayList<>();
         List<Room> allNotReservedRooms = hotelDAO.getAllNotReservedRooms();
+
         for (Map.Entry<String, String> entry : params.entrySet()) {
             for (Room room : allNotReservedRooms){
                 boolean flag = false;
@@ -111,15 +112,12 @@ public class Controller {
     }
 
     private boolean isUserRegistered() {
-        try {
-            if (CurrentUser.getCurrentUser() == null) {
-                throw new NullPointerException();
-            }
-        } catch (NullPointerException e) {
+        if (CurrentUser.getCurrentUser() == null) {
             System.out.println("User not registered");
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 
 }

@@ -7,15 +7,9 @@ import java.util.List;
 public class UserDAO extends DAO<User> {
 
 
-/*
-        public T findUserById(long id) {
-            for (T item : userList) {
-                if (item.getId() == id)
-                    return item;
-            }
-            return null;
+        public User findUserById(long id) {
+            return db.stream().filter(user -> user.getId() == id).findFirst().orElse(null);
         }
-*/
     }
 
 
