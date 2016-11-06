@@ -48,28 +48,20 @@ public class Controller {
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
-        // добавил проверку на регистрацию пользователя
+
         if (!isUserRegistered()) {
             return;
         }
 
         try {
-                // Изменил условие на ИЛИ, было И, получалось что исключение кидалось только если все поля были нулевыми
-                if (roomId == 0 || userId == 0 || hotelId == 0) {
-                    throw new NullPointerException();
+            for (int i = 0; i < hotelDAO.db.size(); i++) {
+                if (hotelDAO.db.get(i).findRoomById(roomId).getId() == roomId
+                        && userDAO.findUserById(userId).getId() == userId
+                        && hotelDAO.db.get(i).getId() == hotelId) {
+                    hotelDAO.db.get(i).findRoomById(roomId).setReservedForUser(CurrentUser.getCurrentUser());
                 }
-                //это нужно заменить на getById для соответствующих классов
-                for (int i = 0; i < hotelDAO.db.size(); i++) {
-                    for (int j = 0; j < hotelDAO.db.get(i).getRooms().size(); j++) {
-                        if (hotelDAO.db.get(i).getRooms().get(j).getId() == roomId
-                                && CurrentUser.getCurrentUser().getId() == userId
-                                && hotelDAO.db.get(i).getId() == hotelId) {
-                            hotelDAO.db.get(i).getRooms().get(j).setReservedForUser(CurrentUser.getCurrentUser());
-                        }
-                    }
-                }
-        } catch (NullPointerException e) {
-            System.out.println("Yours id's aren't correct");
+            }
+
         } catch (IndexOutOfBoundsException e) {
             System.out.println("There is IndexOfBoundException");
         }
@@ -95,25 +87,81 @@ public class Controller {
         }
     }
 
-    public List<Hotel> findRoom(Map<String, String> params) {
+    public List<Room> findRoom(Map<String, String> params) {
         List<Room> foundRooms = new ArrayList<>();
         List<Room> allNotReservedRooms = hotelDAO.getAllNotReservedRooms();
 
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            for (Room room : allNotReservedRooms){
-                List<Boolean> flags = new ArrayList<>();
-                if (entry.getKey().equals("id")) {
-                    Long id = Long.parseLong(entry.getValue());
-                    if (id.equals(room.getId())) {
-                        flags.add(true);
-                    }else {
-                        flags.add(false);
-                    }
-
+            for (Room room : allNotReservedRooms) {
+                boolean roomIsFound = checkParams(entry, room);
+                if (roomIsFound) {
+                    foundRooms.add(room);
                 }
             }
         }
-        return null;
+        return foundRooms;
+    }
+
+    private boolean checkParams(Map.Entry<String, String> entry, Room room) {
+        List<Boolean> flags = new ArrayList<>();
+        if (entry.getKey().equals("id")) {
+            long id = Long.parseLong(entry.getValue());
+            if (id == room.getId()) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        if (entry.getKey().equals("number")) {
+            int number = Integer.parseInt(entry.getValue());
+            if (number == room.getNumber()) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        if (entry.getKey().equals("price")) {
+            int price = Integer.parseInt(entry.getValue());
+            if (price == room.getPrice()) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+
+        }
+        if (entry.getKey().equals("currency")) {
+            Currency currency = Currency.valueOf(entry.getValue());
+            if (currency.equals(room.getCurrency())) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        if (entry.getKey().equals("persons")) {
+            int persons = Integer.parseInt(entry.getValue());
+            if (persons == room.getPersons()) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        if (entry.getKey().equals("roomType")) {
+            RoomType roomType = RoomType.valueOf(entry.getValue());
+            if (roomType.equals(room.getRoomType())) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        if (entry.getKey().equals("hotel")) {
+            Hotel hotel = findHotelByName(entry.getValue()).stream().findFirst().orElse(null);
+            if (hotel.equals(room.getHotel())) {
+                flags.add(true);
+            } else {
+                flags.add(false);
+            }
+        }
+        return flags.stream().allMatch(flag -> flag == true);
     }
 
     private boolean isUserRegistered() {
@@ -124,4 +172,5 @@ public class Controller {
             return true;
         }
     }
+
 }
