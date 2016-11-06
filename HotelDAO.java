@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Администратор on 02.11.2016.
  */
-public class HotelDAO extends DAO<Hotel>{
+public class HotelDAO extends DAO<Hotel> {
 
     {
         db.add(new Hotel("ПРЕМЬЕР ПАЛАС", "Kiev"));
@@ -28,7 +28,6 @@ public class HotelDAO extends DAO<Hotel>{
         rooms0.add(new Room(8, 1300, Currency.UAH, 2, RoomType.Econom, db.get(0)));
         rooms0.add(new Room(9, 1600, Currency.UAH, 3, RoomType.Econom, db.get(0)));
         rooms0.add(new Room(10, 1600, Currency.UAH, 3, RoomType.Econom, db.get(0)));
-        db.get(0).addRoom(rooms0);
 
         List<Room> rooms1 = new ArrayList<>();
         rooms1.add(new Room(1, 2500, Currency.USD, 2, RoomType.Lux, db.get(1)));
@@ -42,7 +41,6 @@ public class HotelDAO extends DAO<Hotel>{
         rooms1.add(new Room(9, 2500, Currency.USD, 2, RoomType.Lux, db.get(1)));
         rooms1.add(new Room(10, 2500, Currency.USD, 2, RoomType.Lux, db.get(1)));
         rooms1.add(new Room(11, 2500, Currency.USD, 2, RoomType.Lux, db.get(1)));
-        db.get(1).addRoom(rooms1);
 
         List<Room> rooms2 = new ArrayList<>();
         rooms2.add(new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, db.get(2)));
@@ -57,7 +55,6 @@ public class HotelDAO extends DAO<Hotel>{
         rooms2.add(new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, db.get(2)));
         rooms2.add(new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, db.get(2)));
         rooms2.add(new Room(12, 2500, Currency.UAH, 2, RoomType.Lux, db.get(2)));
-        db.get(2).addRoom(rooms2);
 
         List<Room> rooms3 = new ArrayList<>();
         rooms3.add(new Room(1, 2500, Currency.USD, 2, RoomType.Lux, db.get(3)));
@@ -70,7 +67,6 @@ public class HotelDAO extends DAO<Hotel>{
         rooms3.add(new Room(8, 2500, Currency.USD, 2, RoomType.Lux, db.get(3)));
         rooms3.add(new Room(9, 2500, Currency.USD, 2, RoomType.Lux, db.get(3)));
         rooms3.add(new Room(10, 2500, Currency.USD, 2, RoomType.Lux, db.get(3)));
-        db.get(3).addRoom(rooms3);
 
         List<Room> rooms4 = new ArrayList<>();
         rooms4.add(new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, db.get(4)));
@@ -84,7 +80,6 @@ public class HotelDAO extends DAO<Hotel>{
         rooms4.add(new Room(9, 2500, Currency.UAH, 2, RoomType.Lux, db.get(4)));
         rooms4.add(new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, db.get(4)));
         rooms4.add(new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, db.get(4)));
-        db.get(4).addRoom(rooms4);
 
         List<Room> rooms5 = new ArrayList<>();
         rooms5.add(new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, db.get(5)));
@@ -99,11 +94,10 @@ public class HotelDAO extends DAO<Hotel>{
         rooms5.add(new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, db.get(5)));
         rooms5.add(new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, db.get(5)));
         rooms5.add(new Room(12, 2500, Currency.UAH, 2, RoomType.Lux, db.get(5)));
-        db.get(5).addRoom(rooms5);
     }
 
     public List<Hotel> findByName(String name) {
-      return db.stream().filter((a) -> a.getName().equals(name)).collect(Collectors.toList());
+        return db.stream().filter((a) -> a.getName().equals(name)).collect(Collectors.toList());
     }
 
     public List<Hotel> findByCity(String city) {
@@ -112,5 +106,14 @@ public class HotelDAO extends DAO<Hotel>{
 
     public Hotel findHotelById(long id) {
         return db.stream().filter(hotel -> hotel.getId() == id).findFirst().orElse(null);
+    }
+
+    public List<Room> getAllNotReservedRooms() {
+        List<Room> allRooms = new ArrayList<>();
+        for (Hotel hotel : db) {
+            List<Room> rooms = hotel.getRooms().stream().filter(room -> room.getReservedForUser() == null).collect(Collectors.toList());
+            allRooms.addAll(rooms);
+        }
+        return allRooms;
     }
 }

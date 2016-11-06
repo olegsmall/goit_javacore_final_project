@@ -11,7 +11,7 @@ public class Hotel {
     private long id;
     private String name;
     private String city;
-    private static List<Room> rooms;
+    private List<Room> rooms;
     private int numberOfRooms;
 
     public Hotel(String name, String city) {
@@ -81,10 +81,6 @@ public class Hotel {
         return rooms;
     }
 
-    public void addRoom(List<Room> rooms) {
-        rooms.forEach(room -> this.rooms.add(room));
-    }
-
     public void addRoom(Room room) {
         this.rooms.add(room);
         this.numberOfRooms += 1;
@@ -94,7 +90,7 @@ public class Hotel {
         return numberOfRooms;
     }
 
-    public static Room findRoomById(long id) {
+    public Room findRoomById(long id) {
         Room roomIsfound = null;
         try {
 
@@ -102,8 +98,6 @@ public class Hotel {
         } catch (NullPointerException e) {
             System.out.println("This room doesn't exist in the list of hotel rooms");
         }
-
         return roomIsfound;
-
     }
 }

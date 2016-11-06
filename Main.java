@@ -43,7 +43,7 @@ public class Main {
         }
 
         // check method perfomance.......
-        System.out.println("\n" + "Founded room is :" + Hotel.findRoomById(hotels.get(0).getRooms().get(1).getId()));
+       // System.out.println("\n" + "Founded room is :" + Hotel.findRoomById(hotels.get(0).getRooms().get(1).getId()));
 
     }
 
