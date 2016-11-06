@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by Sergiy on 10/30/16.
  */
 
-public class User {
+public class User extends BaseEntity{
 
     private long id;
     private String phoneNumber;
@@ -84,7 +84,7 @@ public class User {
     public String getEmailWithName() {
         return fullName + " <" + email + ">";
     }
-    
+
 
     @Override
     public String toString() {
