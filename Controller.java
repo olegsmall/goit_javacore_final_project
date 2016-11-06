@@ -48,28 +48,20 @@ public class Controller {
     }
 
     public void bookRoom(long roomId, long userId, long hotelId) {
-        // добавил проверку на регистрацию пользователя
+
         if (!isUserRegistered()) {
             return;
         }
 
         try {
-                // Изменил условие на ИЛИ, было И, получалось что исключение кидалось только если все поля были нулевыми
-                if (roomId == 0 || userId == 0 || hotelId == 0) {
-                    throw new NullPointerException();
+            for (int i = 0; i < hotelDAO.db.size(); i++) {
+                if (hotelDAO.db.get(i).findRoomById(roomId).getId() == roomId
+                        && userDAO.findUserById(userId).getId() == userId
+                        && hotelDAO.db.get(i).getId() == hotelId) {
+                    hotelDAO.db.get(i).findRoomById(roomId).setReservedForUser(CurrentUser.getCurrentUser());
                 }
-                //это нужно заменить на getById для соответствующих классов
-                for (int i = 0; i < hotelDAO.db.size(); i++) {
-                    for (int j = 0; j < hotelDAO.db.get(i).getRooms().size(); j++) {
-                        if (hotelDAO.db.get(i).getRooms().get(j).getId() == roomId
-                                && CurrentUser.getCurrentUser().getId() == userId
-                                && hotelDAO.db.get(i).getId() == hotelId) {
-                            hotelDAO.db.get(i).getRooms().get(j).setReservedForUser(CurrentUser.getCurrentUser());
-                        }
-                    }
-                }
-        } catch (NullPointerException e) {
-            System.out.println("Yours id's aren't correct");
+            }
+
         } catch (IndexOutOfBoundsException e) {
             System.out.println("There is IndexOfBoundException");
         }
