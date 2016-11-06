@@ -86,10 +86,10 @@ public class Controller {
             System.out.println("Room with Id " + roomId + " not found.");
             return;
         }
-//        User user = userDAO.getUserById(userId);
-//        if(user.equals(room.getReservedForUser())){
-//            room.setReservedForUser(null);
-//        }
+        User user = userDAO.findUserById(userId);
+        if(user.equals(room.getReservedForUser())){
+            room.setReservedForUser(null);
+        }
     }
 
     public List<Hotel> findRoom(Map<String, String> params) {
