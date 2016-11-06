@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by Sergiy on 10/30/16.
  */
 
-public class User extends BaseEntity{
+public class User{
 
     private long id;
     private String phoneNumber;
