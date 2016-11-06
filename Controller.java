@@ -98,11 +98,13 @@ public class Controller {
 
         for (Map.Entry<String, String> entry : params.entrySet()) {
             for (Room room : allNotReservedRooms){
-                boolean flag = false;
+                List<Boolean> flags = new ArrayList<>();
                 if (entry.getKey().equals("id")) {
                     Long id = Long.parseLong(entry.getValue());
-                    if (!id.equals(room.getId())) {
-
+                    if (id.equals(room.getId())) {
+                        flags.add(true);
+                    }else {
+                        flags.add(false);
                     }
 
                 }
