@@ -1,3 +1,5 @@
+package src.Dao;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.Set;
 /**
  * Created by Димон on 31.10.2016.
  */
-abstract class DAO<T> {
+public abstract class DAO<T> {
 
     protected List<T> db;
 
@@ -14,7 +16,7 @@ abstract class DAO<T> {
         this.db = new ArrayList<T>();
     }
 
-    protected boolean add(T t){
+    public boolean add(T t){
         try {
             if (t != null) {
                 this.db.add(t);
@@ -28,7 +30,7 @@ abstract class DAO<T> {
         return true;
         }
 
-    protected boolean delete(T t){
+    public boolean delete(T t){
         try {
                 if (t != null) {
                     this.db.remove(t);

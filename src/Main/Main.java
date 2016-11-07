@@ -1,6 +1,10 @@
-import java.awt.*;
+package src.Main;
+
+import src.Controllers.Controller;
+import src.Entitys.Hotel;
+import src.Entitys.User;
+
 import java.io.*;
-import java.util.*;
 import java.util.List;
 
 /**

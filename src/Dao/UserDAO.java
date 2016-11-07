@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+package src.Dao;
+
+import src.Entitys.User;
 
 /**
  * Created by Sergiy on 11/6/16.

@@ -1,8 +1,8 @@
+package src.Entitys;
+
 import com.sun.istack.internal.NotNull;
 
 import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Sergiy on 10/30/16.

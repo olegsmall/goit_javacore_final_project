@@ -1,3 +1,8 @@
+package src.Entitys;
+
+import src.Enams.Currency;
+import src.Enams.RoomType;
+
 import java.util.Random;
 
 
@@ -93,7 +98,7 @@ public class Room {
         result = 31 * result + (currency != null ? currency.hashCode() : 0);
         result = 31 * result + persons;
         result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
-        //result = 31 * result + (reservedForUser != null ? reservedForUser.hashCode() : 0);
+        result = 31 * result + (reservedForUser != null ? reservedForUser.hashCode() : 0);
         result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
         return result;
     }

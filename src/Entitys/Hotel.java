@@ -1,7 +1,6 @@
-import java.math.BigInteger;
+package src.Entitys;
+
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
 
 /**
  * Created by Димон on 31.10.2016.
