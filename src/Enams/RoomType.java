@@ -1,7 +1,7 @@
 package src.Enams;
 
 public enum RoomType {
-    Standart("Стандарт"), Econom("Эконом"), Lux("Люкс");
+    Standard("Стандарт"), Econom("Эконом"), Lux("Люкс");
 
     private String translate;
 

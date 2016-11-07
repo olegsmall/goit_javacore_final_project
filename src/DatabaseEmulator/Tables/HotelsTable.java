@@ -29,9 +29,9 @@ public class HotelsTable implements Tables<Hotel> {
 
         new Room(1, 2500, Currency.UAH, 1, RoomType.Lux, hotel1);
         new Room(2, 3300, Currency.UAH, 2, RoomType.Lux, hotel1);
-        new Room(3, 1500, Currency.UAH, 1, RoomType.Standart, hotel1);
-        new Room(4, 1800, Currency.UAH, 2, RoomType.Standart, hotel1);
-        new Room(5, 2200, Currency.UAH, 3, RoomType.Standart, hotel1);
+        new Room(3, 1500, Currency.UAH, 1, RoomType.Standard, hotel1);
+        new Room(4, 1800, Currency.UAH, 2, RoomType.Standard, hotel1);
+        new Room(5, 2200, Currency.UAH, 3, RoomType.Standard, hotel1);
         new Room(6, 1000, Currency.UAH, 1, RoomType.Econom, hotel1);
         new Room(7, 1300, Currency.UAH, 2, RoomType.Econom, hotel1);
         new Room(8, 1300, Currency.UAH, 2, RoomType.Econom, hotel1);
