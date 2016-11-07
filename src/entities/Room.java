@@ -1,7 +1,7 @@
-package src.Entitys;
+package entities;
 
-import src.Enams.Currency;
-import src.Enams.RoomType;
+import enums.Currency;
+import enums.RoomType;
 
 import java.util.Random;
 

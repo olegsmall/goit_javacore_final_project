@@ -1,4 +1,4 @@
-package src.Enams;
+package enums;
 
 public enum Currency {
     UAH(980, "грн"), USD(840, "дол");

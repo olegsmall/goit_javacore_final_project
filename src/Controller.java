@@ -1,10 +1,8 @@
-package src.Controllers;
-
-import src.Dao.HotelDao;
-import src.Enams.Currency;
-import src.Enams.RoomType;
-import src.Dao.UserDao;
-import src.Entitys.*;
+import dao.HotelDao;
+import enums.Currency;
+import enums.RoomType;
+import dao.UserDao;
+import entities.*;
 
 import java.util.ArrayList;
 import java.util.List;

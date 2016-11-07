@@ -1,8 +1,8 @@
-package src.Dao;
+package dao;
 
-import src.DatabaseEmulator.Tables.Tables;
-import src.DatabaseEmulator.Tables.UsersTable;
-import src.Entitys.User;
+import database.Tables;
+import database.UsersTable;
+import entities.User;
 
 import java.util.List;
 

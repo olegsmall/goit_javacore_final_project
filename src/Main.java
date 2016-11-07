@@ -1,10 +1,7 @@
-package src.Main;
-
-import src.Controllers.Controller;
-import src.Entitys.CurrentUser;
-import src.Entitys.Hotel;
-import src.Entitys.User;
-import src.Entitys.Room;
+import entities.CurrentUser;
+import entities.Hotel;
+import entities.User;
+import entities.Room;
 
 import java.io.*;
 import java.util.HashMap;

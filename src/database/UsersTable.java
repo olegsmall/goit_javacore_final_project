@@ -1,6 +1,6 @@
-package src.DatabaseEmulator.Tables;
+package database;
 
-import src.Entitys.User;
+import entities.User;
 
 import java.util.ArrayList;
 import java.util.List;

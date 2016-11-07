@@ -1,6 +1,4 @@
-package src.Entitys;
-
-import com.sun.istack.internal.NotNull;
+package entities;
 
 import java.util.Random;
 

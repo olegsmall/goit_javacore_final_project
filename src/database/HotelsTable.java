@@ -1,9 +1,9 @@
-package src.DatabaseEmulator.Tables;
+package database;
 
-import src.Enams.Currency;
-import src.Enams.RoomType;
-import src.Entitys.Hotel;
-import src.Entitys.Room;
+import enums.Currency;
+import enums.RoomType;
+import entities.Hotel;
+import entities.Room;
 
 import java.util.ArrayList;
 import java.util.List;

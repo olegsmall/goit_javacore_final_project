@@ -1,4 +1,4 @@
-package src.Entitys;
+package entities;
 
 public class CurrentUser {
 

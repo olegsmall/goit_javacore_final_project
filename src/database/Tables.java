@@ -1,4 +1,4 @@
-package src.DatabaseEmulator.Tables;
+package database;
 
 import java.util.List;
 

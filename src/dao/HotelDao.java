@@ -1,9 +1,9 @@
-package src.Dao;
+package dao;
 
-import src.DatabaseEmulator.Tables.HotelsTable;
-import src.DatabaseEmulator.Tables.Tables;
-import src.Entitys.Hotel;
-import src.Entitys.Room;
+import database.HotelsTable;
+import database.Tables;
+import entities.Hotel;
+import entities.Room;
 
 import java.util.ArrayList;
 import java.util.List;
