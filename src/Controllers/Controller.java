@@ -1,9 +1,9 @@
 package src.Controllers;
 
+import src.Dao.HotelDao;
 import src.Enams.Currency;
 import src.Enams.RoomType;
-import src.Dao.HotelDAO;
-import src.Dao.UserDAO;
+import src.Dao.UserDao;
 import src.Entitys.*;
 
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import java.util.Map;
 
 public class Controller {
 
-    private HotelDAO hotelDAO;
-    private UserDAO userDAO;
+    private HotelDao hotelDAO;
+    private UserDao userDAO;
 
     public Controller() {
-        hotelDAO = new HotelDAO();
-        userDAO = new UserDAO();
+        hotelDAO = new HotelDao();
+        userDAO = new UserDao();
     }
 
     public List<Hotel> findHotelByName(String name) {
@@ -44,20 +44,12 @@ public class Controller {
         return hotels;
     }
 
-    public boolean addUser(User user) {
-        return userDAO.add(user);
-    }
-
-    public void registerUser(User user) {
-        CurrentUser.setCurrentUser(user);
-    }
-
     public void bookRoom(long roomId, long userId, long hotelId) {
 
         if (!isUserRegistered()) {
             return;
         }
-        Hotel hotel = hotelDAO.findHotelById(hotelId);
+        Hotel hotel = hotelDAO.findByID(hotelId);
         if (hotel == null) {
             System.out.println("Hotel with Id " + hotelId + " not found.");
             return;
@@ -67,7 +59,7 @@ public class Controller {
             System.out.println("Room with Id " + roomId + " not found.");
             return;
         }
-        User user = userDAO.findUserById(userId);
+        User user = userDAO.findByID(userId);
         if (user == null) {
             System.out.println("User with Id " + userId + " not found.");
             return;
@@ -79,7 +71,7 @@ public class Controller {
         if (!isUserRegistered()) {
             return;
         }
-        Hotel hotel = hotelDAO.findHotelById(hotelId);
+        Hotel hotel = hotelDAO.findByID(hotelId);
         if (hotel == null) {
             System.out.println("Hotel with Id " + hotelId + " not found.");
             return;
@@ -89,7 +81,7 @@ public class Controller {
             System.out.println("Room with Id " + roomId + " not found.");
             return;
         }
-        User user = userDAO.findUserById(userId);
+        User user = userDAO.findByID(userId);
         if (user == null) {
             System.out.println("User with Id " + userId + " not found.");
             return;
@@ -174,6 +166,14 @@ public class Controller {
             }
         }
         return flags.stream().allMatch(flag -> flag == true);
+    }
+
+    public void addUser(User user) {
+        userDAO.add(user);
+    }
+
+    public void registerUser(User user) {
+        CurrentUser.setCurrentUser(user);
     }
 
     private boolean isUserRegistered() {

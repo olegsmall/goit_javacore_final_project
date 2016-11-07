@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Димон on 31.10.2016.
  */
-public class Hotel {
+public class Hotel{
 
     private long id;
     private String name;
@@ -28,21 +28,15 @@ public class Hotel {
 
         Hotel hotel = (Hotel) o;
 
-        if (id != hotel.id) return false;
-        if (numberOfRooms != hotel.numberOfRooms) return false;
         if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        if (city != null ? !city.equals(hotel.city) : hotel.city != null) return false;
-        return rooms != null ? rooms.equals(hotel.rooms) : hotel.rooms == null;
+        return city != null ? city.equals(hotel.city) : hotel.city == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (city != null ? city.hashCode() : 0);
-        //       result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
-        result = 31 * result + numberOfRooms;
         return result;
     }
 
