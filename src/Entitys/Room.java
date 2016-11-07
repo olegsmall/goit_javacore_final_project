@@ -5,7 +5,6 @@ import src.Enams.RoomType;
 
 import java.util.Random;
 
-
 public class Room {
 
     private long id;
@@ -16,8 +15,6 @@ public class Room {
     private RoomType roomType;
     private User reservedForUser;
     private Hotel hotel;
-
-
 
     public Room(int number, int price, Currency currency, int persons, RoomType roomType, Hotel hotel) {
         long l = new Random().nextLong();
@@ -63,10 +60,6 @@ public class Room {
         this.reservedForUser = reservedForUser;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public Hotel getHotel() {
         return hotel;
     }
@@ -84,8 +77,6 @@ public class Room {
         if (persons != room.persons) return false;
         if (currency != room.currency) return false;
         if (roomType != room.roomType) return false;
-        if (reservedForUser != null ? !reservedForUser.equals(room.reservedForUser) : room.reservedForUser != null)
-            return false;
         return hotel != null ? hotel.equals(room.hotel) : room.hotel == null;
 
     }
@@ -98,22 +89,15 @@ public class Room {
         result = 31 * result + (currency != null ? currency.hashCode() : 0);
         result = 31 * result + persons;
         result = 31 * result + (roomType != null ? roomType.hashCode() : 0);
-        result = 31 * result + (reservedForUser != null ? reservedForUser.hashCode() : 0);
         result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Room{" +
-                "id=" + id +
-                ", number=" + number +
-                ", price=" + price +
-                ", currency=" + currency +
-                ", persons=" + persons +
-                ", roomType=" + roomType +
-                ", reservedForUser=" + reservedForUser +
-                ", hotel=" + hotel +
-                '}';
+        return  "" + hotel + ": " +"Room " + " №" + number +
+                ", " + roomType.getTranslate() +
+                ", " + persons + " persons" +
+                ", price: " + price + currency.getName();
     }
 }

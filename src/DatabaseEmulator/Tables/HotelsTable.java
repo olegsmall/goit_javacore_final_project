@@ -9,11 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Администратор on 07.11.2016.
- */
-public class HotelsTable implements Tables<Hotel>{
-    private static  List<Hotel> db = new ArrayList<>();
+public class HotelsTable implements Tables<Hotel> {
+    private static List<Hotel> db = new ArrayList<>();
 
     static {
         Hotel hotel1 = (new Hotel("ПРЕМЬЕР ПАЛАС", "Kiev"));
@@ -33,7 +30,7 @@ public class HotelsTable implements Tables<Hotel>{
         new Room(1, 2500, Currency.UAH, 1, RoomType.Lux, hotel1);
         new Room(2, 3300, Currency.UAH, 2, RoomType.Lux, hotel1);
         new Room(3, 1500, Currency.UAH, 1, RoomType.Standart, hotel1);
-        new Room(4, 1800, Currency.UAH, 2, RoomType.Standart,hotel1);
+        new Room(4, 1800, Currency.UAH, 2, RoomType.Standart, hotel1);
         new Room(5, 2200, Currency.UAH, 3, RoomType.Standart, hotel1);
         new Room(6, 1000, Currency.UAH, 1, RoomType.Econom, hotel1);
         new Room(7, 1300, Currency.UAH, 2, RoomType.Econom, hotel1);
@@ -75,7 +72,7 @@ public class HotelsTable implements Tables<Hotel>{
         new Room(7, 2500, Currency.USD, 2, RoomType.Lux, hotel4);
         new Room(8, 2500, Currency.USD, 2, RoomType.Lux, hotel4);
         new Room(9, 2500, Currency.USD, 2, RoomType.Lux, hotel4);
-        new Room(10, 2500, Currency.USD, 2, RoomType.Lux,hotel4);
+        new Room(10, 2500, Currency.USD, 2, RoomType.Lux, hotel4);
 
         new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
         new Room(2, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
@@ -86,8 +83,8 @@ public class HotelsTable implements Tables<Hotel>{
         new Room(7, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
         new Room(8, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
         new Room(9, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
-        new Room(10, 2500, Currency.UAH, 2, RoomType.Lux,hotel5);
-        new Room(11, 2500, Currency.UAH, 2, RoomType.Lux,hotel5);
+        new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
+        new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, hotel5);
 
         new Room(1, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
         new Room(2, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
@@ -98,9 +95,9 @@ public class HotelsTable implements Tables<Hotel>{
         new Room(7, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
         new Room(8, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
         new Room(9, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
-        new Room(10, 2500, Currency.UAH, 2, RoomType.Lux,hotel6);
-        new Room(11, 2500, Currency.UAH, 2, RoomType.Lux,hotel6);
-        new Room(12, 2500, Currency.UAH, 2, RoomType.Lux,hotel6);
+        new Room(10, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
+        new Room(11, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
+        new Room(12, 2500, Currency.UAH, 2, RoomType.Lux, hotel6);
     }
 
     @Override

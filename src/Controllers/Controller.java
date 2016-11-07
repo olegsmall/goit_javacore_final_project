@@ -51,20 +51,21 @@ public class Controller {
         }
         Hotel hotel = hotelDAO.findByID(hotelId);
         if (hotel == null) {
-            System.out.println("Hotel with Id " + hotelId + " not found.");
+            System.out.println("Hotel with Id " + hotelId + " not found.  Room did not book");
             return;
         }
         Room room = hotel.findRoomById(roomId);
         if (room == null) {
-            System.out.println("Room with Id " + roomId + " not found.");
+            System.out.println("Room with Id " + roomId + " not found.  Room did not book");
             return;
         }
         User user = userDAO.findByID(userId);
         if (user == null) {
-            System.out.println("User with Id " + userId + " not found.");
+            System.out.println("User with Id " + userId + " not found. Room did not book");
             return;
         }
         room.setReservedForUser(user);
+        System.out.println("Room successfully booked");
     }
 
     public void cancelReservation(long roomId, long userId, long hotelId) {

@@ -1,29 +1,23 @@
 package src.Enams;
 
-/**
- * Created by Vlad on 30.10.2016.
- */
 public enum Currency {
     UAH(980, "грн"), USD(840, "дол");
 
     private int code;
     private String name;
 
-    Currency(int code) {
+    Currency(int code, String name) {
         this.code = code;
-    }
-
-    Currency(int i, String name) {
         this.name = name;
     }
+
     public int getCode() {
         return code;
-        }
+    }
 
     public String getName() {
         return name;
-        }
-
+    }
 
 
 }

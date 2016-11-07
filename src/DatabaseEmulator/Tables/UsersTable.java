@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Администратор on 07.11.2016.
- */
 public class UsersTable implements Tables<User> {
+
     static List<User> db = new ArrayList<>();
 
     @Override
@@ -37,7 +35,6 @@ public class UsersTable implements Tables<User> {
         }
         dbUser.setEmail(user.getEmail());
         dbUser.setFullName(user.getFullName());
-        dbUser.setId(user.getId());
         dbUser.setPhoneNumber(user.getPhoneNumber());
     }
 

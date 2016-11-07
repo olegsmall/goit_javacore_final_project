@@ -2,10 +2,7 @@ package src.Entitys;
 
 import java.util.*;
 
-/**
- * Created by Димон on 31.10.2016.
- */
-public class Hotel{
+public class Hotel {
 
     private long id;
     private String name;
@@ -21,33 +18,20 @@ public class Hotel{
         this.numberOfRooms = 0;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public Room findRoomById(long id) {
+        Room roomIsfound = null;
+        try {
 
-        Hotel hotel = (Hotel) o;
-
-        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        return city != null ? city.equals(hotel.city) : hotel.city == null;
-
+            roomIsfound = rooms.stream().filter(room -> room.getId() == id).findAny().orElse(null);
+        } catch (NullPointerException e) {
+            System.out.println("This room doesn't exist in the list of hotel rooms");
+        }
+        return roomIsfound;
     }
 
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                //"id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", numberOfRooms=" + numberOfRooms +
-                '}';
+    public void addRoom(Room room) {
+        this.rooms.add(room);
+        this.numberOfRooms += 1;
     }
 
     public long getId() {
@@ -74,23 +58,31 @@ public class Hotel{
         return rooms;
     }
 
-    public void addRoom(Room room) {
-        this.rooms.add(room);
-        this.numberOfRooms += 1;
-    }
-
     public int getNumberOfRooms() {
         return numberOfRooms;
     }
 
-    public Room findRoomById(long id) {
-        Room roomIsfound = null;
-        try {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-            roomIsfound = rooms.stream().filter(room -> room.getId() == id).findAny().orElse(null);
-        } catch (NullPointerException e) {
-            System.out.println("This room doesn't exist in the list of hotel rooms");
-        }
-        return roomIsfound;
+        Hotel hotel = (Hotel) o;
+
+        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
+        return city != null ? city.equals(hotel.city) : hotel.city == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel \"" + name + "\" in city " + city;
     }
 }

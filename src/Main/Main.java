@@ -1,15 +1,14 @@
 package src.Main;
 
 import src.Controllers.Controller;
+import src.Entitys.CurrentUser;
 import src.Entitys.Hotel;
 import src.Entitys.User;
+import src.Entitys.Room;
 
 import java.io.*;
 import java.util.List;
 
-/**
- * Created by Администратор on 30.10.2016.
- */
 public class Main {
     public static void main(String[] args) throws IOException {
 
@@ -23,31 +22,40 @@ public class Main {
         controller.addUser(user2);
         controller.addUser(user3);
 
-
+        System.out.println("\nTry to search with anonymous user:");
         hotels =  controller.findHotelByCity("Kiev");
+        System.out.println("\n----------------------------------------------\n");
 
         controller.registerUser(user2);
 
-        System.out.println("Свободные комнаты в отелях города Киева:");
+
+        System.out.println("Empty rooms in city Kiev:");
         hotels = controller.findHotelByCity("Kiev");
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
+        System.out.println("\n----------------------------------------------\n");
 
-        System.out.println("Свободные комнаты отеля ПРЕМЬЕР ПАЛАС:");
+        System.out.println("Empty rooms in hotel ПРЕМЬЕР ПАЛАС:");
         hotels = controller.findHotelByName("ПРЕМЬЕР ПАЛАС");
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() == null)).forEach(System.out::println);
         }
+        System.out.println("\n----------------------------------------------\n");
 
-        System.out.println("Booked rooms are such elements:");
-        controller.bookRoom(hotels.get(0).getRooms().get(1).getId(),user2.getId(),hotels.get(0).getId());
+        System.out.println("Book rooms by id`s:");
+        Hotel hotel1 = controller.findHotelByName("ПРЕМЬЕР ПАЛАС").stream().findFirst().orElse(null);
+        User user = CurrentUser.getCurrentUser();
+        if (hotel1 != null && user != null) {
+            Room room = hotel1.getRooms().stream().findFirst().orElse(null);
+            if (user != null) {
+                controller.bookRoom(room.getId(),user.getId(),hotel1.getId());
+            }
+        }
+        System.out.println("\n----------------------------------------------\n");
+
         for (Hotel hotel : hotels) {
             hotel.getRooms().stream().filter((room -> room.getReservedForUser() != null)).forEach(System.out::println);
         }
-
-        // check method perfomance.......
-       // System.out.println("\n" + "Founded room is :" + Hotel.findRoomById(hotels.get(0).getRooms().get(1).getId()));
-
     }
 }
